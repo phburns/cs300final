@@ -1,0 +1,27 @@
+.deck {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 35px;
+    font-weight: bold; 
+    position: relative;
+}
+  
+h1 {
+  text-align: center;
+}
+  .deck:hover {
+    background-color: #f0f0f0;
+  }
+
+  .delete-deck {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }

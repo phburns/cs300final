@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/stylesheets/flashcard.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <%- include('partials/navigation') %>
+    <div class="container mt-4">
+        <h1 class="text-center mb-4" id="deck-name"><%= deck.name %></h1>
+
+        <!-- Form to create a new flashcard -->
+        <form id="add-flashcard-form" action="/decks/<%= deck._id %>/flashcards" method="post" class="mb-4">
+            <div class="form-group mb-3">
+                <input type="text" name="question" placeholder="Question" class="form-control">
+            </div>
+            <div class="form-group mb-3">
+                <input type="text" name="answer" placeholder="Answer" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Add Flashcard</button>
+        </form>
+
+        <% deck.flashcards.forEach((flashcard, index)=> { %>
+            <% let displayStyle=index===0 ? 'block' : 'none' ; %>
+            <div class="flashcard-container center" data-index="<%= index %>" data-deck-id="<%= deck._id %>" data-flashcard-id="<%= flashcard._id %>" style="display: <%= displayStyle %>">
+                <div class="card">
+                    <div class="front">
+                        <h2>Q:</h2>
+                        <p><%= flashcard.question %></p>
+                    </div>
+                    <div class="back">
+                        <h2>A:</h2>
+                        <p><%= flashcard.answer %></p>
+                    </div>
+                </div>
+            <div class="button-container">
+                <button class="prev-button btn btn-primary nav-button">←</button>
+                <button class="next-button btn btn-primary nav-button">→</button>
+            </div>
+        
+                <!-- Form to delete a flashcard -->
+                <form class="delete-form mb-3" onsubmit="event.preventDefault(); deleteFlashcard(event);">
+                    <button type="submit" class="btn btn-sm btn-danger">Delete Flashcard</button>
+                </form>
+        
+                <!-- Form to edit a flashcard -->
+                <form class="edit-form mb-3" onsubmit="event.preventDefault(); editFlashcard(this.question.value, this.answer.value);">
+                    <div class="form-group">
+                        <input type="text" name="question" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="answer" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Edit Flashcard</button>
+                </form>
+            </div>
+        <% }); %>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script src="/javascripts/deleteFlashcard.js"></script>
+    <script src="/javascripts/editFlashcard.js"></script>
+    <script src="/javascripts/flashcardFlip.js"></script>
+    <script src="/javascripts/flashcardNavigation.js"></script>
+    <script src="/javascripts/score.js"></script>
+</body>
+</html>

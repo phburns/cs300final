@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Your Decks</title>
+  <link rel="stylesheet" href="/stylesheets/decks.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+  <%- include('partials/navigation') %>
+
+  <h1>Your Decks</h1>
+  <div id="deckContainer" class="container">
+    <div class="row">
+      <% decks.forEach(function(deck) { %>
+        <div class="col-md-4">
+          <div class="deck">
+            <a href="/decks/<%= deck._id %>">
+              <h2><%= deck.name %></h2>
+            </a>
+            <button class="btn btn-sm btn-danger delete-deck" data-deck-id="<%= deck._id %>">Delete</button>          </div>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <script src="/javascripts/deleteDeck.js"></script>
+</body>
+</html>

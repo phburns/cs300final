@@ -1,0 +1,174 @@
+.flashcard {
+  background-color: #f9f9f9;
+  width: 500px;
+  border: 1px solid black;
+  padding: 20px;
+  margin: 20px auto;
+  list-style: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.flashcard.out {
+  transform: translateX(-100%);
+}
+
+.card {
+  width: 500px;
+  height: 300px;
+  position: relative;
+  perspective: 1000px;
+}
+
+.front,
+.back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  transition: transform 0.6s;
+  transition-delay: 0.3s;
+}
+
+.front {
+  background-color: #f9f9f9;
+  border: 1px solid black;
+  padding: 20px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.front.out {
+  transform: translateX(-100%);
+}
+
+.back {
+  background-color: #f9f9f9;
+  border: 1px solid black;
+  padding: 20px;
+  transform: rotateY(180deg);
+}
+
+.card.flipped .front {
+  transform: rotateY(180deg);
+}
+
+.card.flipped .back {
+  transform: rotateY(0deg);
+}
+
+.flashcard p {
+  font-size: 20px;
+  margin: 0;
+}
+
+.flashcard p:first-child {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.edit-flashcard,
+.delete-flashcard {
+  margin-top: 20px;
+}
+
+
+.prev {
+  left: -50px;
+}
+
+.next {
+  right: -50px;
+}
+
+
+.center {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+button[type="submit"] {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.edit-form {
+  display: none;
+  margin: auto;
+}
+
+.delete-form {
+  display: none;
+  margin: auto;
+}
+
+#add-flashcard-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+#deck-name {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#content-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.btn-primary {
+  background-color: #6a1b9a;
+  border-color: #6a1b9a;
+}
+
+.hidden {
+  display: none;
+}
+
+.next-button {
+  background-color: red;
+  display: block;
+  margin: auto;
+  width: 50px;
+  }
+
+.prev-button {
+  display: none;
+  position: relative;
+  top: 100%;
+  left: 0; /* Adjust the left property */
+  width: 50px; /* Limit the width of the buttons */
+}
+.flashcard-container .prev-button {
+  display: block;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.flashcard-container {
+  position: relative;
+  width: 100%;
+  margin: auto;
+}
+
+.button-container {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin: auto;
+  text-align: center;
+}
